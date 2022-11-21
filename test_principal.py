@@ -1,5 +1,5 @@
 import pytest
-from principal import raiz
+from principal import raiz, add_from_file
 
 
 def test_raiz():
@@ -19,3 +19,8 @@ def test_raiz():
 )
 def test_raiz_mult(input_a, expected):
     assert raiz(input_a) == expected
+
+
+def test_read_and_add(mocker):
+    mocker.patch('principal.read_as_list', return_value=[1, 1])
+    assert add_from_file('whatever') == 2
